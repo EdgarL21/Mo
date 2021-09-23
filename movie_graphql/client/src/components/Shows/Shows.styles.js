@@ -4,5 +4,7 @@ export const Div = styled.div`
   background-color: black;
   color: red;
 
-  .cont
+  /* .container {
+    justify-content: end;
+  } */
 `;

@@ -72,3 +72,51 @@ export const QUERY_ALL_SHOWS = gql`
     }
   }
 `;
+
+export const QUERY_SINGLE_SHOW = gql`
+  query show($id: ID) {
+    tv {
+      show(id: $id) {
+        backdrop(size: Original)
+        credits {
+          cast {
+            character
+          }
+        }
+        episodeRunTime
+        episodes {
+          id
+          name
+        }
+        id
+        images {
+          posters {
+            image(size: Original)
+          }
+        }
+        nextEpisodeToAir {
+          airDate
+          name
+        }
+        numberOfEpisodes
+        numberOfSeasons
+        originalName
+        overview
+        popularityIndex
+        recommendations {
+          edges {
+            node {
+              id
+              images {
+                posters {
+                  image(size: Original)
+                }
+              }
+              originalName
+            }
+          }
+        }
+      }
+    }
+  }
+`;

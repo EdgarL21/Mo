@@ -12,6 +12,7 @@ import AllMovies from "./components/Movies";
 import OneMovie from "./components/OneMovie";
 import NavBar from "./components/NavBar";
 import AllShows from "./components/Shows";
+import OneShow from "./components/OneShow";
 
 // const httpLink = createHttpLink({
 //   uri: "/graphql", //The URI of the GraphQL endpoint that Apollo Client will communicate with.
@@ -53,8 +54,11 @@ function App() {
             <AllMovies />
             <AllShows />
           </Route>
-          <Route exact path="/:id">
+          <Route exact path="/movie/:id">
             <OneMovie />
+          </Route>
+          <Route exact path="/show/:id">
+            <OneShow />
           </Route>
         </Switch>
       </Router>

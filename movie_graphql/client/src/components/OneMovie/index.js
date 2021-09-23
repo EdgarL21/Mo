@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { QUERY_SINGLE_MOVIE } from "../../utils/queries";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { Div } from "./OneMovie.styles";
 
 const OneMovie = () => {
@@ -14,6 +14,7 @@ const OneMovie = () => {
   const { loading, error, data } = useQuery(QUERY_SINGLE_MOVIE, {
     variables: { id: id },
   });
+  console.log("here");
 
   console.log(data);
   console.log("id");
@@ -23,7 +24,8 @@ const OneMovie = () => {
   // const movie = data?.movie || {};
   // const OneMovie = data.movies;
 
-  if (loading) return "Loading...";
+  if (loading) return <Spinner animation="border" variant="danger" />;
+
   if (error) return `Error! ${error.message}`;
   const movie = data.movies.movie;
 
@@ -37,7 +39,7 @@ const OneMovie = () => {
         src={movie.backdrop}
         alt={movie.originalTitle}
       />
-      <Container>
+      <div className="container">
         <Row>
           <Col xs={12} lg={4}>
             <img
@@ -64,7 +66,7 @@ const OneMovie = () => {
             <div>{movie.overview}</div>
           </Col>
         </Row>
-      </Container>
+      </div>
     </Div>
   );
 };
