@@ -24,6 +24,8 @@ export const QUERY_SINGLE_MOVIE = gql`
   query movie($id: ID) {
     movies {
       movie(id: $id) {
+        backdrop(size: Original)
+        budget
         credits {
           cast {
             character
@@ -33,21 +35,28 @@ export const QUERY_SINGLE_MOVIE = gql`
           }
         }
         id
-        rating
-        originalTitle
-        budget
-        numberOfRatings
-        overview
-        releaseDate
-        revenue
-        runtime
-        title
-        backdrop(size: Original)
         images {
           posters {
             image(size: Original)
           }
         }
+        numberOfRatings
+        originalTitle
+        overview
+        rating
+        recommendations {
+          edges {
+            node {
+              id
+              originalTitle
+              poster(size: Original)
+            }
+          }
+        }
+        releaseDate
+        revenue
+        runtime
+        title
       }
     }
   }

@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import { QUERY_SINGLE_MOVIE } from "../../utils/queries";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -66,6 +66,23 @@ const OneMovie = () => {
             <div>{movie.overview}</div>
           </Col>
         </Row>
+      </div>
+      <div className="container">
+        <div>
+          {movie.recommendations.edges.map((recommendation) => (
+            <div key={recommendation.node.id}>
+              <div>{recommendation.node.originalTitle}</div>
+              <Link to={`/movie/${recommendation.node.id}`}>
+                <img
+                  src={recommendation.node.poster}
+                  alt={recommendation.node.originalTitle}
+                  width="200"
+                  height="300"
+                />
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </Div>
   );
